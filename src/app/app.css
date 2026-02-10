@@ -1,0 +1,179 @@
+#home {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 50% 50%, 
+    rgba(220, 38, 38, 0.15) 0%, 
+    rgba(10, 10, 12, 1) 60%, 
+    #050505 100%
+  );
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 80%, rgba(220, 38, 38, 0.12), transparent 60%);
+  animation: gradientShift 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-5%, -5%) scale(1.1); }
+}
+
+.abstract-grid {
+  position: absolute;
+  inset: -200px; 
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.1) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1.5px, transparent 1.5px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  opacity: 0.8;
+  z-index: 0;
+  transform: perspective(1500px) rotateX(15deg);
+  /* Speed increased: from 20s to 8s */
+  animation: gridMove 1s linear infinite; 
+  will-change: background-position;
+}
+
+.abstract-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1.5px, transparent 1.5px);
+  background-size: 60px 60px;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 100px; } 
+}
+
+.abstract-blob {
+  position: absolute;
+  filter: blur(120px);
+  opacity: 0.4;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 450px;
+  height: 450px;
+  background: #dc2626;
+  top: -100px;
+  left: -120px;
+  animation: blobFloat 14s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: #991b1b;
+  bottom: -120px;
+  right: -100px;
+  animation: blobFloat 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blobFloat {
+  from { transform: translate(0, 0); }
+  to { transform: translate(80px, 60px); }
+}
+
+#home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: particleFloat 40s linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes particleFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+.interactive-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255, 77, 77, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  mix-blend-mode: screen;
+  transition: transform 0.1s ease-out;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+  text-align: center;
+}
+
+[data-depth] {
+  will-change: transform;
+  display: inline-block;
+  transform-style: preserve-3d;
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.status-pulse {
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(135deg, #ff4d4d, #dc2626);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+}
+
+.status-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #dc2626;
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.tech-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-card:hover {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(255, 77, 77, 0.4) !important;
+  transform: translateY(-8px) translateZ(20px);
+}
+
+.hover-effect:hover {
+  color: #ff4d4d !important;
+  opacity: 1 !important;
+}

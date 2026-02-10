@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" 
+     style="background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(220, 38, 38, 0.2);">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="#home">
+      <div class="me-2" style="width: 12px; height: 12px; background: linear-gradient(135deg, #ff4d4d, #b91c1c); border-radius: 3px;"></div>
+      <span style="color: #ffffff; letter-spacing: -0.5px;">{{ name }}</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-2" *ngFor="let navItem of ['Home', 'About', 'Skills', 'Projects', 'Contact'];">
+          <a class="nav-link text-light opacity-75 hover-effect small fw-bold" [href]="'#' + navItem.toLowerCase()">
+            {{ navItem }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="min-vh-100 d-flex align-items-center position-relative overflow-hidden pt-5" 
+         style="background: radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.05) 0%, #0a0a0c 100%);">
+  
+  <div class="container position-relative">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <h1 class="display-3 fw-bold mb-4" style="color: #ffffff; letter-spacing: -1.5px;">
+          Building Code That <span style="background: linear-gradient(to right, #ff4d4d, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Delivers</span> 
+        </h1>
+        
+        <p class="lead mb-4" style="color: #CBD5E1; font-size: 1.2rem; line-height: 1.6;">
+          {{ introPart1 }}
+          <br /><br />
+          {{ introPart2 }}
+        </p>
+        
+        <div class="d-flex flex-wrap gap-3 mb-5 align-items-center">
+          <a href="#contact" class="btn px-4 py-3 shadow-lg fw-bold" 
+             style="background: linear-gradient(135deg, #dd1a1a, #991b1b); color: white; border-radius: 12px; border: none;">
+            Let's Connect
+          </a>
+          <a [href]="linkedin" target="_blank" class="btn px-4 py-3 fw-bold" 
+             style="background: rgba(255,255,255,0.03); color: #ffffff; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="position-relative d-flex justify-content-center">
+          <div class="p-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 40px; box-shadow: 0 25px 150px -12px rgba(0,0,0,0.5);">
+            <img src="/images/pfp.jpg" [alt]="name" 
+                 style="width: 320px; height: 320px; object-fit: cover; border-radius: 150px;">
+          </div>
+          
+          <div class="position-absolute bottom-0 start-0 mb-3 ms-n2">
+            <div class="d-flex align-items-center gap-3 px-3 py-2" 
+                 style="background: rgba(15, 15, 18, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 100px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+              <div class="status-pulse"></div>
+              <span class="small fw-bold text-light" style="letter-spacing: 0.5px;">Currently open to new roles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="py-5" style="background-color: #08080a;">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" *ngFor="let group of techStack">
+        <div class="tech-card p-4 h-100" 
+             style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;">
+          <h6 class="fw-bold text-uppercase mb-4" style="color: #dc2626; font-size: 0.75rem; letter-spacing: 1px;">{{ group.category }}</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <span *ngFor="let item of group.items" class="px-3 py-1 small fw-medium" 
+                  style="background: rgba(255,255,255,0.03); color: #cbd5e1; border-radius: 8px;">
+              {{ item }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
