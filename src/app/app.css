@@ -631,7 +631,14 @@ html, body {
   background: rgba(20, 20, 24, 0.95);
   border-radius: 20px;
 }
+.nav-link {
+  cursor: pointer; /* Forces the hand icon */
+  transition: opacity 0.3s ease; /* Smooths out your hover effect */
+}
 
+.nav-link:hover {
+  opacity: 1 !important; /* Makes the text pop on hover */
+}
 .project-modal::-webkit-scrollbar-thumb {
   background: rgba(255, 60, 60, 0.5);
   border-radius: 20px;
