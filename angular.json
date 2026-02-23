@@ -23,6 +23,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "CNAME",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -48,12 +53,39 @@
                   "maximumError": "12kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "outputPath": "dist/portfolio" 
             },
+            "github-pages": {
+            "optimization": true,
+            "outputHashing": "all",
+            "sourceMap": false,
+            "extractLicenses": false,
+            "outputPath": "docs",
+            "baseHref": "/",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              {
+                "glob": "CNAME",
+                "input": "src",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "ssr": false,
+            "prerender": false,
+            "outputMode": "static"
+          },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "outputPath": "dist/portfolio" 
             }
           },
           "defaultConfiguration": "production"
@@ -63,6 +95,9 @@
           "configurations": {
             "production": {
               "buildTarget": "Portfolio:build:production"
+            },
+            "github-pages": {
+              "buildTarget": "Portfolio:build:github-pages"
             },
             "development": {
               "buildTarget": "Portfolio:build:development"
